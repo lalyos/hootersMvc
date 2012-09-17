@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.acme.hooters.model.Girl;
 import com.acme.hooters.service.GirlRepository;
@@ -26,19 +27,18 @@ public class GirlsController {
     }
     
     @RequestMapping("/girl/remove")
-    public String remove(HttpServletRequest req, Model model) {
+    public String remove(Model model, @RequestParam String name) {
         
-        girlRepository.remove(req.getParameter("name"));
+        girlRepository.remove(name);
         model.addAttribute("girls", girlRepository.getAllGirls());
 
         return "girls/list";
     }
     
     @RequestMapping("/girl/add")
-    public String add(HttpServletRequest req, Model model) {
+    public String add(Model model, @RequestParam String name, @RequestParam String basket, @RequestParam Integer breast) {
         
-        int breastSize = Integer.valueOf(req.getParameter("breast"));
-        Girl newGirl = new Girl(req.getParameter("name"), breastSize, req.getParameter("basket"));
+        Girl newGirl = new Girl(name, breast, basket);
         girlRepository.addGirl(newGirl);
         
         model.addAttribute("girls", girlRepository.getAllGirls());
