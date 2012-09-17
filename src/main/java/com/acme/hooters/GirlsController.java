@@ -27,21 +27,19 @@ public class GirlsController {
     }
     
     @RequestMapping("/girl/remove")
-    public String remove(Model model, @RequestParam String name) {
+    public String remove(@RequestParam String name) {
         
         girlRepository.remove(name);
-        model.addAttribute("girls", girlRepository.getAllGirls());
 
-        return "girls/list";
+        return "redirect:/girls/list";
     }
     
     @RequestMapping("/girl/add")
-    public String add(Model model, @RequestParam String name, @RequestParam String basket, @RequestParam Integer breast) {
+    public String add(@RequestParam String name, @RequestParam String basket, @RequestParam Integer breast) {
         
         Girl newGirl = new Girl(name, breast, basket);
         girlRepository.addGirl(newGirl);
         
-        model.addAttribute("girls", girlRepository.getAllGirls());
-        return "girls/list";        
+        return "redirect:/girls/list";        
     }
 }
