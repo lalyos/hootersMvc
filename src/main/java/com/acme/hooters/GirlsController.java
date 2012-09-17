@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.acme.hooters.model.Girl;
 import com.acme.hooters.service.GirlRepository;
 
 @Controller
@@ -31,5 +32,16 @@ public class GirlsController {
         model.addAttribute("girls", girlRepository.getAllGirls());
 
         return "girls/list";
+    }
+    
+    @RequestMapping("/girl/add")
+    public String add(HttpServletRequest req, Model model) {
+        
+        int breastSize = Integer.valueOf(req.getParameter("breast"));
+        Girl newGirl = new Girl(req.getParameter("name"), breastSize, req.getParameter("basket"));
+        girlRepository.addGirl(newGirl);
+        
+        model.addAttribute("girls", girlRepository.getAllGirls());
+        return "girls/list";        
     }
 }
