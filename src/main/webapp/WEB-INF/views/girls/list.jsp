@@ -23,7 +23,7 @@
 
 <h2>Add Girl v1.1</h2>
 <c:url var="addUrl" value="/girls/add" />
-<form:form action="${addUrl}" modelAttribute="newGirl">
+<form:form action="${addUrl}" modelAttribute="girl">
  <br/><form:input path="name"/>
  <br/><form:input path="breastSize"/>
  <br/><form:select path="basket" >
