@@ -3,6 +3,11 @@
 
 <ul>
 <c:forEach var="next" items="${girls}">
-      <li>${next}</li>
+  <c:url var="removeUrl" value="/girl/remove">
+    <c:param name="name" value="${next.name}" />
+  </c:url>
+      <li>${next}
+      <a href="${removeUrl}">X</a>
+      </li>
 </c:forEach>
 </ul>
