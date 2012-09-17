@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingErrorProcessor;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,14 +46,19 @@ public class GirlsController {
     }
     
     @RequestMapping("add")
-    public String add(@ModelAttribute Girl girl, BindingResult errors, RedirectAttributes model) {
+    public String add(@ModelAttribute Girl girl, BindingResult errors, Model model, RedirectAttributes flash) {
+        if (girl.getName().trim().length() < 1) {
+            errors.addError(new FieldError("girl", "name", "name is required"));
+        }
         if (errors.hasErrors()) {
-            model.addFlashAttribute("msg", "Plesae fill the form ...");
+            flash.addFlashAttribute("msg", "Plesae fill the form ...");
             model.addAttribute("girl", girl);
+            model.addAttribute("basketOptions", getBasketOptions());
+
             return "girls/list";
         } else {
             girlRepository.addGirl(girl);
-            model.addFlashAttribute("msg", "You have succesfully added: " + girl.getName());
+            flash.addFlashAttribute("msg", "You have succesfully added: " + girl.getName());
             return "redirect:/girls/list";  
         }
               

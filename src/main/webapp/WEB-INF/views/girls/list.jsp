@@ -22,10 +22,13 @@
 </ul>
 
 <h2>Add Girl v1.1</h2>
+
+
 <c:url var="addUrl" value="/girls/add" />
 <form:form action="${addUrl}" modelAttribute="girl">
- <br/><form:input path="name"/>
- <br/><form:input path="breastSize"/>
+
+ <br/><form:input path="name"/> <form:errors path="name" cssStyle="color:red" />
+ <br/><form:input path="breastSize"/> <form:errors path="breastSize" cssStyle="color:red"  />
  <br/><form:select path="basket" >
  <form:options items="${basketOptions}"/>
  </form:select>
@@ -33,4 +36,5 @@
 </form:form>
 
 
+<h:debugMap map="${requestScope}" title="Request"></h:debugMap>
 <h:debugMap map="${sessionScope}" title="session"></h:debugMap>
