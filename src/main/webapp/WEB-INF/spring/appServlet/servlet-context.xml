@@ -11,8 +11,8 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
   <annotation-driven conversion-service="conversionService" />
   <beans:bean id="conversionService" class="com.acme.hooters.ApplicationConversionServiceFactoryBean"></beans:bean>
-  <beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" 
-  p:basename="messages" 
+  <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource" 
+  p:basename="classpath:messages" 
   />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
