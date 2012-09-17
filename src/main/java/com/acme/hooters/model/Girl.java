@@ -2,8 +2,14 @@ package com.acme.hooters.model;
 
 import java.util.Random;
 
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Girl {
+    @NotEmpty
     private String name;
+    @Min(value=90)
     private int breastSize;
     private String basket;
     private String imageUrl;

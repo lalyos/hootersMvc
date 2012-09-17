@@ -1,5 +1,7 @@
 package com.acme.hooters;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,12 +48,8 @@ public class GirlsController {
     }
     
     @RequestMapping("add")
-    public String add(@ModelAttribute Girl girl, BindingResult errors, Model model, RedirectAttributes flash) {
-        if (girl.getName().trim().length() < 1) {
-            errors.addError(new FieldError("girl", "name", "name is required"));
-        }
+    public String add(@Valid Girl girl, BindingResult errors, Model model, RedirectAttributes flash) {
         if (errors.hasErrors()) {
-            flash.addFlashAttribute("msg", "Plesae fill the form ...");
             model.addAttribute("girl", girl);
             model.addAttribute("basketOptions", getBasketOptions());
 
