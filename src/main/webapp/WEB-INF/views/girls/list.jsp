@@ -3,7 +3,7 @@
 
 <ul>
 <c:forEach var="next" items="${girls}">
-  <c:url var="removeUrl" value="/girl/remove">
+  <c:url var="removeUrl" value="/girls/remove">
     <c:param name="name" value="${next.name}" />
   </c:url>
       <li>${next}
@@ -15,7 +15,7 @@
 
 <h2>Add Girl</h2>
 
-<c:url var="addUrl" value="/girl/add" />
+<c:url var="addUrl" value="/girls/add" />
 
 <form action="${addUrl}" method="post">
  <br>Name: <input type="text" name="name" />

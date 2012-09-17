@@ -26,7 +26,7 @@ public class GirlsController {
         return "girls/list";
     }
     
-    @RequestMapping("/girl/remove")
+    @RequestMapping("/girls/remove")
     public String remove(@RequestParam String name) {
         
         girlRepository.remove(name);
@@ -34,7 +34,7 @@ public class GirlsController {
         return "redirect:/girls/list";
     }
     
-    @RequestMapping("/girl/add")
+    @RequestMapping("/girls/add")
     public String add(@RequestParam String name, @RequestParam String basket, @RequestParam Integer breast) {
         
         Girl newGirl = new Girl(name, breast, basket);
