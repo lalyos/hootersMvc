@@ -1,4 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:if test="${not empty msg}">
+  <div style="background: #050; border: 2px green solid; color:white; width: 300px;"> ${msg}
+  </div>
+</c:if>
 <h1>List of girls</h1>
 
 <ul>
@@ -19,7 +24,7 @@
 
 <form action="${addUrl}" method="post">
  <br>Name: <input type="text" name="name" />
- <br>Breast Size: <input type="text" name="breast" />
+ <br>Breast Size: <input type="text" name="breastSize" />
  <br>Basket type: <select name="basket">
  <option value="A" >A</option>
  <option value="B" >B</option>
