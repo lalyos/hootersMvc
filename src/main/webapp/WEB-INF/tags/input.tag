@@ -5,7 +5,7 @@
 
   <form:errors path="${path }">
     <c:set var="errorClass" value="error"  />
-    <kaka/>
+    <!-- empty ;) -->
   </form:errors>
   
   <c:set var="errorMsg" >
