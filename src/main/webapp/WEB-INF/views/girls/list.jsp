@@ -44,7 +44,7 @@
 <h:input path="breastSize" /> 
 <h:select path="basket" options="${basketOptions}" /> 
 
-<h:button value="add_1" />
+<h:button value="add" />
 
 </form:form>
 </div>
