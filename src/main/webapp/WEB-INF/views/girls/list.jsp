@@ -35,6 +35,3 @@
  <br/><form:button>add</form:button>
 </form:form>
 
-
-<h:debugMap map="${requestScope}" title="Request"></h:debugMap>
-<h:debugMap map="${sessionScope}" title="session"></h:debugMap>
