@@ -8,30 +8,43 @@
   </div>
 </c:if>
 <h1>List of girls</h1>
+<div class="row">
+<table class="table .table-striped table-condensed">
+<thead>
+  <tr>
+    <th>name</th>
+    <th>breast</th>
+    <th>basket</th>
+    <th>delete</th>
+   </tr>
+</thead>
+<tbody>
+  <c:forEach var="next" items="${girls}">
+  <c:url var="removeUrl" value="/girls/remove/${next.name}"/>
+  <tr>
+    <td>${next.name}</td>
+    <td>${next.breastSize}</td>
+    <td>${next.basket}</td>
+    <td><a href="${removeUrl}">X</a></td>
+  </tr>
+  </c:forEach>
+</tbody>
+</table>
 
-<ul>
-<c:forEach var="next" items="${girls}">
-  <c:url var="removeUrl" value="/girls/remove">
-    <c:param name="name" value="${next.name}" />
-  </c:url>
-      <li>${next}
-      <a href="${removeUrl}">X</a>
-      </li>
-</c:forEach>
+</div>
+<div class="row">
 
-</ul>
-
-<h2>Add Girl v1.1</h2>
+<h2>Add Girl v1.7</h2>
 
 
 <c:url var="addUrl" value="/girls/add" />
-<form:form action="${addUrl}" modelAttribute="girl">
+<form:form action="${addUrl}" modelAttribute="girl" cssClass="form-horizontal">
 
- <br/><form:input path="name"/> <form:errors path="name" cssStyle="color:red" />
- <br/><form:input path="breastSize"/> <form:errors path="breastSize" cssStyle="color:red"  />
- <br/><form:select path="basket" >
- <form:options items="${basketOptions}"/>
- </form:select>
- <br/><form:button>add</form:button>
+<h:input path="name" /> 
+<h:input path="breastSize" /> 
+<h:select path="basket" options="${basketOptions}" /> 
+
+<h:button value="add_1" />
+
 </form:form>
-
+</div>

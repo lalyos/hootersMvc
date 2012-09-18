@@ -1,5 +1,7 @@
 package com.acme.hooters;
 
+import java.util.Arrays;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,8 @@ public class GirlsController {
         return "girls/list";
     }
     
-    private Object getBasketOptions() {
-        return new String[]{"A","B","C","D"};
+    private Object getBasketOptions() {        
+        return Arrays.asList("A","B","C","D");
     }
 
     @RequestMapping("remove")
@@ -52,7 +54,7 @@ public class GirlsController {
         if (errors.hasErrors()) {
             model.addAttribute("girl", girl);
             model.addAttribute("basketOptions", getBasketOptions());
-
+            model.addAttribute("girls", girlRepository.getAllGirls());
             return "girls/list";
         } else {
             girlRepository.addGirl(girl);
